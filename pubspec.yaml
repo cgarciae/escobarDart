@@ -1,0 +1,27 @@
+name: escobardart
+description: A sample web application
+dependencies:
+  angular: any
+  async_await:
+    git: https://github.com/dart-lang/async_await.git
+  browser: any
+  di: any
+  fp: any
+  http: any
+  mongo_dart: any
+  redstone: any
+  redstone_mapper: any
+  redstone_mapper_mongo: any
+  shelf_static: any
+transformers:
+- async_await
+- redstone_mapper
+- angular:
+    html_files:
+    - lib/components/login/login.html
+    - lib/components/login/nuevo_usuario.html
+    - lib/components/home/home.html
+    - lib/components/evento/evento.html
+    - lib/components/vista/vista.html
+    - lib/components/admin/admin.html
+    - lib/components/admin/model.html

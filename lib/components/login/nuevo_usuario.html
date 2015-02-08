@@ -1,0 +1,27 @@
+<form data-abide>
+<fieldset>
+    <legend>Registro</legend>
+    
+    <h4>
+        Ingresa los datos para registrarte en ARISTA 
+    </h4>
+
+    <div class="name-field">
+        <label>Nombre:<small>required</small>
+            <input type="text" ng-model="user.nombre" required pattern="[a-zA-Z]+">
+        </label>
+        <small class="error">Name is required and must be a string.</small>
+    </div>
+    <div>Apellido: <input type="text" ng-model="user.apellido"></div>
+    <div>Email: <input type="text" ng-model="user.email"></div>
+    <div>Contraseña: <input type="password" ng-model="user.password"></div>
+    <div>
+        Repetir Constraseña: <input type="password" ng-model="password2">
+        <span class="[alert] [radius] label">{{passwordStatus}} </span>
+        
+    </div>
+    <a ng-click="registrar()" class="button right radius" >Registrar</a>
+    
+    
+</fieldset>
+</form>

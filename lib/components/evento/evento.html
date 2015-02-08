@@ -1,0 +1,81 @@
+<fieldset>
+    <legend>EDICIÓN EVENTO</legend>
+    <br>
+    <h3 class="text-center">
+        <h3>
+            Ingresa el contenido de tu evento
+        </h3>
+    </h3>
+    <br>
+    <div class="large-12 small-centered columns">
+        <div class="row medium-uncollapse large-collapse">
+            <div class="small-6 columns">
+                <h3>Imágen preview</h3>
+                <br>
+                <div class="large-4 columns">
+                    <img alt={{evento.descripcion}} ng-src="{{evento.imagenPreview.path}}">
+                </div>
+                <div class="large-8 columns">
+                    <form enctype="multipart/form-data" method="POST">
+                         Choose a file to upload: <input name="file" type="file"><br>
+                         <button class="button small radius" ng-click="upload ($event)">Upload</button>
+                    </form>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <h3>!Elige tu marcador!</h3>
+                <br>
+                <div class="large-4 columns">
+                    <img alt={{evento.descripcion}} ng-src="{{targetImageUrl}}">
+                </div>
+                <div class="large-8 columns">
+                    <form enctype="multipart/form-data">
+                         Choose a file to upload: <input name="file" type="file"><br>
+                         <button class="button small radius" ng-click="uploadTarget ($event)">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>          
+            <div class="large-5">
+                <label>Nombre:</label>
+                <input type="text" ng-model="evento.nombre">
+            </div>
+            <div class="small-10">
+                <label>Descripcion </label>
+                <textarea ng-model='evento.descripcion'></textarea>
+            </div>
+        </div>
+        <br>
+        
+            <hr> 
+            <br>
+            <h2>Vistas</h2>
+            <br>
+            <div class="row">
+                <div ng-repeat="vista in vistas"
+                     ng-click="ver (vista)">
+                     <div class="large-12 small-centered columns">
+                      <div class="panel boxes">
+                        <a class="button secondary right tiny" ng-click="eliminar (vista, $event)">X</a>
+                        <br>
+                        <div class="row">
+                            <div class="large-2 small-6 columns">
+                                <img alt="{{iconoURL(vista)}}" ng-src="{{iconoURL (vista)}}" class="max-width">
+                            </div>
+                             <div class="large-10 small-6 columns">
+                                <p class="text-center"><b>{{vista.icon.texto}}</b></p>
+                             </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+            <a class="button radius small right expand" ng-click='nuevaVista()'>Nueva Vista</a> 
+            <a class="button radius right" ng-click='save()'>Save</a>
+    </div>      
+</fieldset>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arista Client</title>
+    <link rel="stylesheet" href="css/arista.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body style="background-color:#e6e4e3">
+    <nav style= "background-color:#517dbe" class="tab-bar">
+        <div class="left-small">
+            <a class="item menu-icon">
+                <span>
+                </span>
+            </a>
+        </div>
+      <div class="middle tab-bar-section">!Bienvenidos a ARISTA Client </div>
+      <div  class = "right tab-bar-section">
+        <a  href="#" ng-click="logout()"
+               class="button radius right tiny"
+               ng-if="isLoggedIn">
+                    Logout
+        </a>
+        {{isLoggedIn}}
+      </div>
+    </nav>
+    
+    <br>
+
+
+    <div class="large-8 small-centered columns" style="background-color:white" class="sombra">
+        <br>
+        <ng-view></ng-view>
+    </div>
+    
+       
+    
+      <a data-options="align:left" data-dropdown="dropInfo" aria-controls="drop1" aria-expanded="true"></a>
+        <ul id="dropInfo" class="f-dropdown" data-dropdown-content aria-hidden="false" tabindex="-1">
+          <li><a href="#">This is a link</a></li>
+        </ul>
+    
+   
+    <script src="/js/vendor/fastclick.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script type="application/dart" src="main.dart"></script>
+    <script type="text/javascript" src="packages/browser/dart.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+</body>
+</html>

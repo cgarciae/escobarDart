@@ -1,0 +1,28 @@
+.brigth{
+    text-align: right;
+}
+
+.max-width{
+    height:70px;
+    width:auto;
+}
+
+.control-width{
+    width:100% !important;
+}
+
+.boxes:hover, .boxes:focus{
+    box-shadow: 0 0 6px 1px rgba(0, 140, 186, 0.5);
+}
+
+.gray-b{
+    background-color: #d8d8d8;
+}
+
+.size-th{
+    max-height:200px;
+}
+
+.sombra{
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}

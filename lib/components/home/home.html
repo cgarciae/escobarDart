@@ -1,0 +1,45 @@
+<fieldset>
+    <a  ng-if="isAdmin"
+        ng-click="router.go ('admin', {}, forceReload: true)">
+        Go to Admin
+    </a>
+    <br>
+    <h4 class="text-center">
+        Hola <b> {{user.nombre}}  {{user.apellido}}! </b>
+    </h4>
+    <br>
+    <div class="row">
+      <div class="small-11 small-centered columns">
+        <h1>Eventos</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div ng-repeat="evento in eventos" 
+            ng-click="ver (evento)">
+            
+                <div class="panel control-width boxes">
+                    <a ng-click="eliminar (evento, $event)"
+                       class="button secondary right tiny">X</a>
+                    
+                    <br>
+                    
+                    <b>{{evento.nombre}}</b>
+                    
+                    <br> 
+                    
+                    <br>
+                    <i>{{evento.descripcion}}</i>
+        </div>
+    </div>
+    
+    <div class="clearfix">
+        <a ng-click='nuevoEvento()' class="button radius right">Nuevo Evento</a>
+    </div>
+    
+    
+  
+</fieldset>
+
+        
+<img alt="" ng-src="{{url}}">

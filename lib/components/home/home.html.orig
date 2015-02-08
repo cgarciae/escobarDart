@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+<div class="row"> 
+    <p>
+        Hola {{user.username}} desde acá puedes ver un resumen de tus eventos e ingresar a editarlos o crear uno nuevo.
+    </p>
+    <h1>Eventos</h1>
+=======
+<div> 
+Hola {{user.nombre}} {{user.apellido}}!
+
+<h1>Eventos</h1>
+>>>>>>> upstream/master
+    <div ng-repeat="evento in eventos" 
+        ng-click="ver (evento)">
+        <a ng-click="eliminar (evento, $event)" class="button alert round">X</a>
+        <span style="font-weight: bold;">{{evento.nombre}}</span>
+        <section style="font-style: italic;">{{evento.descripcion}}</section>
+        <br>
+    </div>
+    
+   
+  <a role="button" aria-label="submit form" ng-click='nuevoEvento()' class="button radius">Nuevo Evento</a>
+  
+</div>

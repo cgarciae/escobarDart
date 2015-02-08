@@ -1,0 +1,294 @@
+<fieldset>
+    <legend>EDICIÓN VISTA</legend>
+    <a class="button radius right" ng-click='save()'>Save</a>
+    
+    <br>
+    <hr>
+    <div class="large-2 columns" ng-if="vista.type__ != null && vista.type__ != ''">
+        <div class="panel">
+            <h3> Icono </h3>
+            <ul class="no-bullet">
+                <li><img alt="Icono" ng-src="{{urlIcono}}" class="gray-b">
+                <br>
+                <li><label>Nombre:</label> <input type="text" ng-model="vista.icon.texto"></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="row collapse">
+        <br>   
+    </div>
+    <div ng-switch="vista.type__">
+        <div ng-switch-when="ConstruccionRAJS, Assembly-CSharp">
+            <br>
+            <h2>Edición Vista Construcción RA</h2>
+            <br>
+            
+            <div class="large-6 columns">
+                <fieldset>
+                    <legend> Modelo </legend>
+                    <ul class="no-bullet">
+                        <li class = "large-5 columns"><label>URL:</label> <input type="text" ng-model="vista.modelo.url_objeto"></li>
+                        <li class = "large-7 columns">
+                            <form enctype="multipart/form-data" method="POST">
+                                 Choose a file to upload: <input name="file" type="file"><br>
+                                 <button class="button tiny" ng-click="uploadObjetoUnityUserFile ($event)">Upload</button>
+<<<<<<< HEAD
+                                 <a class="button tiny" ng-href = "{{vista.modelo.url_objeto}}" 
+                                target="_blank">
+                                Download
+                            </a>
+=======
+                                 <p class="button tiny"
+                                    ng-href = "{{vista.modelo.url_objeto}}" 
+                                    target="_blank">
+                                    Download
+                                </p>
+>>>>>>> upstream/master
+                            </form>
+                        </li>
+                       <!-- <li><label>Versión:</label> <input type="number" ng-model="vista.modelo.version"></li> -->
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="row large-6 columns">
+                <fieldset>
+                    <legend> Target </legend>
+                    <ul class="no-bullet">
+                        <li class = "large-5 columns"><label>URL:</label> <input type="text" ng-model="vista.target.url"></li>
+                        <li class = "large-7 columns">
+                            <form enctype="multipart/form-data" method="POST">
+                                 Choose a file to upload: <input name="file" type="file"><br>
+                                 <button class="button tiny" ng-click="upload ($event, vista.target.path, guardarUrlTarget )">Upload</button>
+                                 <p class="button tiny" ng-href = "{{vista.target.url}}" 
+                                target="_blank">
+                                Download
+                            </p>
+                            </form>
+                        </li>
+                       <!-- <li class = "large-3 columns"><label>Versión:</label> <input type="number" ng-model="vista.target.version"></li> -->
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="large-12 columns">
+                <fieldset>
+                    <legend> Muebles</legend> <p>{{vista.muebles.length}} Muebles</p>
+                    <ul class="no-bullet">
+                        <li ng-repeat="elemento in vista.muebles"> 
+                            <ul class="large-3 columns no-bullet panel">
+                                
+                                 <a class="button secondary right tiny" ng-click="EliminarElemento(elemento, vista.muebles)">x</a>
+                                
+                                <li><label>ID:</label> {{elemento.id}}</li>
+                                <li><label>Nombre:</label> <input type="text" ng-model="elemento.nombre"></li>
+                                <li><label>Titulo:</label> <input type="text" ng-model="elemento.titulo"></li>
+                                <li>
+                                    <img alt="Imágen" ng-src="{{elemento.urlImagen}}">
+                                    <form enctype="multipart/form-data" method="POST">
+                                         Choose a file to upload: <input name="file" type="file"><br>
+                                         <button class="button tiny" ng-click="upload ($event, elemento.path, guardarUrlImagenElemento, elemento )">Upload</button>
+                                        Download
+                                    </p>
+                                    </form>
+                                </li>
+                                <li><label>URL Imágen:</label> <input type="text" ng-model="elemento.path"></li>
+                                <li><label>Texto:</label> <textarea type="text" ng-model="elemento.texto"></textarea></li>
+                            </ul>
+                        </li>   
+                    </ul>
+                    <hr>
+                    <br>
+                    <a class="button small radius right" ng-click="NuevoMueble()">Nuevo Mueble</a>
+                </fieldset>
+           </div>
+           <div class="large-12 columns">
+                <fieldset>
+                    <legend> Cuartos</legend> <p>{{vista.cuartos.length}} Cuartos</p>
+                    <ul class="no-bullet">
+                        <li ng-repeat="elemento in vista.cuartos"> 
+                            <ul class="large-3 columns no-bullet panel">
+                                
+                                <a class="button secondary right tiny" ng-click="EliminarElemento(elemento, vista.cuartos)">x</a>
+                                
+                                <li><label>ID:</label> {{elemento.id}}</li>
+                                <li><label>Nombre:</label> <input type="text" ng-model="elemento.nombre"></li>
+                                <li><label>Titulo:</label> <input type="text" ng-model="elemento.titulo"></li>
+                                <li>
+                                    <form enctype="multipart/form-data" method="POST">
+                                        <img alt="Imágen" ng-src="{{elemento.urlImagen}}">
+                                         Choose a file to upload: <input name="file" type="file"><br>
+                                         <button class="button tiny" ng-click="upload ($event, elemento.path, guardarUrlImagenElemento, elemento )">Upload</button>
+                                    </form>
+                                </li>
+                                <li><label>URL Imágen:</label> <input type="text" ng-model="elemento.path"></li>
+                                <li><label>Texto:</label> <textarea type="text" ng-model="elemento.texto"></textarea></li>
+                            </ul>
+                        </li>   
+                    </ul>
+                    <hr>
+                    <br>
+                    <a class="button small radius right" ng-click="NuevoCuarto()">Nuevo Cuarto</a>
+               </fieldset>
+           </div>
+           <hr>
+           <br>
+        </div>
+        <div ng-switch-when="InfoContactoJS, Assembly-CSharp">
+            <h2>Edición Vista Info + Contacto</h2>
+            <br>
+            <div class= "small-8 small-centered columns">
+                <div class="large-4 columns">
+                    <div class="panel">
+                        <h3>Elementos Contacto </h3>
+                        <div ng-repeat="contacto in vista.elementosContacto" >
+                            <hr>
+                            <a class="button secondary right tiny" ng-click="EliminarElemento( contacto, vista.elementosContacto)">x</a>
+                            <br>
+                            <div ng-switch="contacto.type__">
+                                <div ng-switch-when="LlamarContactoJS, Assembly-CSharp">
+                                    <label>Telefono:</label> <input type="text" ng-model="contacto.telefono">
+                                </div>
+                                <div ng-switch-default>
+                                    <a class="button radius left" data-dropdown="dropContacto"
+                                       aria-controls="dropContacto" aria-expanded="false"
+                                       data-options="align:left">
+                                        Escoge el Tipo de Elemento Contacto &raquo;
+                                    </a>
+                                    <ul id="dropContacto" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+                                      <li ng-repeat="tipo in tiposElementoContacto"
+                                         ng-click="seleccionarTipoElemento (tipo, contacto)"
+                                         class="panel boxes">
+                                            <b>{{tipo.nombre}}</b>
+                                            <br>   
+                                            <i>{{tipo.descripcion}}</i>
+                                            <br>
+                                       </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <ul class="button-group radius brigth">
+                            <a class="brigth button small" ng-click="vista.NuevoElementoContacto ()">+ Contacto</a>  
+                        </ul> 
+                    </div>
+                </div>
+                <div class="large-8 columns">
+                    <div class="panel">
+                        <h3>Elementos Información </h3>
+                        <div ng-repeat="info in vista.elementosInfo" >
+                        <hr>
+                        <a class="button secondary right tiny" ng-click="EliminarElemento( info, vista.elementosInfo)">x</a>
+                        <br>
+                            <div ng-switch="info.type__">
+                                <div ng-switch-when="TituloInfoJS, Assembly-CSharp">
+                                    <label>Titulo:</label> <input type="text" ng-model="info.titulo">
+                                </div>
+                                <div ng-switch-when="ImagenInfoJS, Assembly-CSharp">
+                                    <form enctype="multipart/form-data" method="POST">
+                                        <img alt="Imágen" ng-src="{{info.path}}">
+                                        <br>
+                                         Choose a file to upload: <input name="file" type="file"><br>
+                                         <button class="button tiny" ng-click="upload ($event, info.path, guardarUrlInfo, info )">Upload</button>
+                                    </form>
+                                    <label>Url Imágen:</label> <input type="text" ng-model="info.path">                                                
+                                </div>
+                                <div ng-switch-when="InfoTextoJS, Assembly-CSharp">
+                                    <label>Titulo:</label> <input type="text" ng-model="info.titulo">
+                                    <label>Descripción:</label> <input type="text" ng-model="info.descripcion">
+                                </div>
+                                <div ng-switch-default>
+                                    <br>
+                                    <a class="button radius left" data-dropdown="dropInfo"
+                                       aria-controls="dropInfo" aria-expanded="false"
+                                       data-options="align:left">
+                                        Escoge el Tipo de Elemento Información &raquo;
+                                    </a>
+                                    <ul id="dropInfo" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+                                      <li ng-repeat="tipo in tiposElementoInfo"
+                                         ng-click="seleccionarTipoElemento (tipo, info)"
+                                         class="panel boxes">
+                                            <b>{{tipo.nombre}}</b>
+                                            <br>   
+                                            <i>{{tipo.descripcion}}</i>
+                                            <br>
+                                       </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <ul class="button-group radius brigth">
+                            <a class="brigth button small" ng-click="vista.NuevoElementoInfo ()">+ Información</a>  
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div ng-switch-when="MultimediaJS, Assembly-CShar">
+            <h2>Edición Multimedia</h2>
+                            <br>
+                            <div class="small-8 small-centered columns">
+                                <div class="panel">
+                                    <h3> Texturas </h3>
+                                    <div ng-repeat="textura in vista.textures" >
+                                        <hr>
+                                        <a class="button secondary right tiny" ng-click="EliminarElemento( textura, vista.textures)">x</a>
+                                        <br>
+                                        <ul class="no-bullet">
+                                            <img alt="Textura" ng-src="{{textura.urlTextura}}">
+                                            <br>
+                                            <form enctype="multipart/form-data" method="POST">
+                                                 Choose a file to upload: <input name="file" type="file"><br>
+                                                 <button class="button tiny" ng-click="upload ($event, textura.path, guardarUrlTextura, textura )">Upload</button>
+                                            </form>
+                                            <li><label>Imagen:</label> <input type="text" ng-model="textura.path"></li>
+                                            <li><label>Descripción:</label> <input type="text" ng-model="textura.texto"></li>
+                                        </ul>
+                                    </div>
+                                     <hr>
+                                    <br>
+                                    <ul class="button-group radius brigth">
+                                        <a class="brigth button small" ng-click="vista.NuevaTextura ()">+ Textura</a>  
+                                    </ul> 
+                                </div>
+                            </div>
+                            <hr>
+        </div>
+        <div ng-switch-when="MapaConstruccionJS, Assembly-CSharp">
+            <h2>Edición Mapa Construción</h2>
+            <br>
+            <div class="large-4 columns">
+                <div class="panel">
+                    <ul class="no-bullet">
+                        <li><label>Centro:</label> <input type="text" ng-model="vista.center"></li>
+                        <li><label>Zoom:</label> <input type="number" ng-model="vista.zoom"></li>
+                        <li><label>Descripción:</label> <input type="text" ng-model="vista.texto"></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div ng-switch-default>
+            <br>
+            <a class="button radius" data-dropdown="selectTipo"
+               aria-controls="selectTipo" data-options="align:right">
+                Escoge el Tipo de Vista &raquo;
+            </a>
+            <ul id="selectTipo" class="f-dropdown">
+              <li ng-repeat="tipo in tiposDeVista"
+                 ng-click="seleccionarTipoVista (tipo)"
+                 {{tipo.nombre}}
+                 class="panel boxes">
+                    <b>{{tipo.nombre}}</b>
+                    <br>   
+                    <i>{{tipo.descripcion}}</i>
+                    <br>
+               </li>
+            </ul>
+        </div>
+    </div>
+</fieldset>
